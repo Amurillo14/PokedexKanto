@@ -27,35 +27,39 @@ table {
     background-color: $white;
 }
 
-.mat-row:hover{
+.mat-cell::first-letter {                   //Transforma la primera letra en mayuscula del nombre del pokemon
+    text-transform: uppercase;
+}
+
+.mat-row:hover{                                //Estilos del puntero sobre la linea seleccionada
     cursor: pointer;
     box-shadow: inset 0 0 0 .25em $yellow;
 }
 
-::ng-deep.mat-paginator {
+::ng-deep.mat-paginator {                       //Estilos del paginador
     width: 80%;
     margin: auto;
 }
 
-.mat-form.field {
+.mat-form.field {       
     font-size: .95em;
     width: 20%;
     margin-bottom: 5px;
     padding: .5em;
 }
 
-::ng-deep.mat-form-field-label {
+::ng-deep.mat-form-field-label {                //Estilos etiqueta de filtro
     color: $white !important;
 }
 
-::ng-deep.mat-form-field-underline {
+::ng-deep.mat-form-field-underline {            //Estilos linea de filtro estandar
     background-color: $white !important;
 }
 
-::ng-deep.mat-form-field-ripple {
+::ng-deep.mat-form-field-ripple {               //Estilos de linea de filtro seleccionada
     background-color: $white !important;
 }
 
-input {
+input {                                         //Estilos del texto de filtro
     color: $white !important;
 }

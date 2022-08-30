@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class PokeTableComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(private pokeService: PokemonService) { }
+  constructor(private pokeService: PokemonService, private router: Router) { }
 
   ngOnInit(): void {
     this.getPokemons();
@@ -31,7 +32,8 @@ export class PokeTableComponent implements OnInit {
           pokemonData = {
             position: i,
             image: res.sprites.front_default,
-            name: res.name
+            name: res.name,
+            type: res.types[0].type.name,
           };
           this.data.push(pokemonData);
           this.dataSource = new MatTableDataSource<any>(this.data);
@@ -51,5 +53,9 @@ export class PokeTableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  getRow(row: any){
+    this.router.navigateByUrl(`pokeDetail/${row.position}`);
   }
 }
